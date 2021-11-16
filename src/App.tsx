@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
+import todos from './api/todos';
+import users from './api/users';
+import {TodoList} from "./TodoList/TodoList";
+
+const preparedTodos = todos.map(todo => ({
+    ...todo,
+    user: users.find(user => user.id === todo.userId),
+}));
+
+const App: React.FC = () => (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Static list of todos</h1>
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+            <span>Todos: </span>
+            {todos.length}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <p>
+            <span>Users: </span>
+            {users.length}
+        </p>
+
+        <TodoList todos={preparedTodos}/>
     </div>
-  );
-}
+);
 
 export default App;

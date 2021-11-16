@@ -1,8 +1,11 @@
 import React from "react";
+import {User} from '../User/User';
+import './Todo.scss'
 
 interface User {
     name: string;
 }
+
 type Props = {
     title: string,
     completed: boolean,
@@ -11,16 +14,11 @@ type Props = {
 
 export const Todo: React.FC<Props> = ({title, completed, user}) => (
     <>
-        <div>
-            {title}
-        </div>
-        <div>
-            Completed:
-            {' '}
+        <p className="title">{title}</p>
+        <p>
+            {`completed: `}
             {completed ? 'yes' : 'no'}
-        </div>
-        <div>
-            {user.name}
-        </div>
+        </p>
+        <User {...user}/>
     </>
 );

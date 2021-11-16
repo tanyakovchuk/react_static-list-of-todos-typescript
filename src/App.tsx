@@ -17,13 +17,11 @@ const App: React.FC = () => (
             <span>Todos: </span>
             {todos.length}
         </p>
-
         <p>
             <span>Users: </span>
             {users.length}
         </p>
-
-        <TodoList todos={preparedTodos}/>
+        <TodoList todos={preparedTodos} />
     </div>
 );
 
